@@ -4,13 +4,21 @@ import AnimatedTitle from "../../components/astro/AnimatedTitle/index.astro";
 import "./styles.css";
 import ResourcesList from "../../components/astro/ResourcesList/index.astro";
 import { webResources } from "../../data/web-resources";
-
+import SearchBar from "../../components/astro/SearchBar/index.astro";
+export const prerender = true;
+export const searchHandler = (evt:any) => {
+  console.log("asdasd",evt);
+  // return webResources.filter((resource) => {
+  //   resource.resources.filter(resource => resource.title.includes(text));
+  // })
+};
 ---
 
 <Layout title="Recursos">
   <main>
     <div class="container">
       <section>
+        <SearchBar resources={webResources} handler={searchHandler}/>
         <AnimatedTitle color="blue" text="Recursos para aprender y practicar programación" />
         <ResourcesList resourcesItemList={webResources} />
       </section>
